@@ -9,3 +9,7 @@ SessionLocal = sessionmaker(
     autoflush= False,
     bind=engine,
 )
+
+def test_connection():
+    with engine.connect() as connection:
+        print("Database is connected")
