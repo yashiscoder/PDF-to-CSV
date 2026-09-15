@@ -1,3 +1,5 @@
+#----- This file is for creating the table for the user ------
+
 import uuid
 from datetime import datetime
 
