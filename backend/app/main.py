@@ -1,9 +1,7 @@
 from fastapi import FastAPI
-from app.database.connection import test_connection
 
 
 app = FastAPI()
-test_connection()
 
 @app.get("/")
 async def root():
