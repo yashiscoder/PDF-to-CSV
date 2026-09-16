@@ -1,3 +1,4 @@
+# ------ Docker needs to turn on inorder to run alembic current command, our common mistake
 from logging.config import fileConfig
 
 from sqlalchemy import engine_from_config
@@ -10,7 +11,7 @@ from alembic import context
 # access to the values within the .ini file in use.
 config = context.config
 from app.core.config import settings
-config.set_main_option("sqlalchemy.url", settings.DATABASE_URL)
+config.set_main_option("sqlalchemy.url", settings.DATABASE_URL.replace("%","%%"))
 
 # Interpret the config file for Python logging.
 # This line sets up loggers basically.
