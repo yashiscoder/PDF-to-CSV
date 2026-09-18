@@ -1,1 +1,6 @@
-import APIRouter from fastapi
+from fastapi import APIRouter
+
+router = APIRouter(
+    prefix="/auth",
+    tags=["Authentication"]
+)
