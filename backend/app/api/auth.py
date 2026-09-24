@@ -3,6 +3,7 @@ from pydantic import BaseModel
 from sqlalchemy.orm import Session
 from app.database.connection import get_db
 from app.database.models import User
+from app.core.security import hash_password
 
 
 router = APIRouter(
@@ -30,6 +31,15 @@ def register_user(
             status_code=status.HTTP_409_CONFLICT,
             detail="Email already registered."
         )
+    hashed_password = hash_password(user.password)
+    new_user = User(
+        name=user.name,
+        email=user.email,
+        password_hash=hashed_password
+    )
+    db.add(new_user)
+    db.commit()
+    db.refresh(new_user)
     return {
-        "message": f"User {user.name} created via APIRouter!"
+        "message": f"User {user.name} created via APIRouter!",
     }

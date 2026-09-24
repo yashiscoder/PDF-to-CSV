@@ -12,4 +12,4 @@ def verify_password(password: str, password_hash: str) -> bool:
     try:
         return ph.verify(password_hash, password)
     except VerifyMismatchError:
-        return False
+        return False    
