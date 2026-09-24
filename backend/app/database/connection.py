@@ -12,7 +12,7 @@ SessionLocal = sessionmaker(
 )   
 
 Base = declarative_base()
-
+#------ Each request is creating the session
 def get_db():
     db = SessionLocal()
     try:
